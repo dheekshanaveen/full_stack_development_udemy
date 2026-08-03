@@ -1,0 +1,9 @@
+$("img").removeClass("salvatore");
+$("h1").addClass("head")
+$("img").removeClass("damon");
+$("h1").click(function(){
+    $("h1").css("color","purple")
+});
+$(document).keypress(function(event){
+    $("h1").text(event.key);
+});
