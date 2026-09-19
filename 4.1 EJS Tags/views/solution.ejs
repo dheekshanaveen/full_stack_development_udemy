@@ -19,11 +19,11 @@
   <% if (seconds % 2===0) { %>
     <ul>
       <!-- List goes here if current second is even. -->
-      <%items.forEach((fruit)=> { %>
+      <%items.forEach((fruits)=> { %>
         <li>
-          <%=fruit %>
+          <%= fruits %>
         </li>
-        <%}) %>
+        <% }) %>
 
           <!-- Otherwise it should display the following: -->
           <!-- <p>No items to display</p> -->

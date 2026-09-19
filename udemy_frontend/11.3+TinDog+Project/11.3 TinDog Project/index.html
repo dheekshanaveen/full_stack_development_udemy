@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Groot</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- ✅ Fixed Bootstrap CSS link -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a
+          href="/"
+          class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+        >
+          <svg class="bi me-2" width="40" height="32" aria-hidden="true">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+          <span class="fs-4 fw-bold">Groot</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <a href="#" class="nav-link active" aria-current="page">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="./css/achievements.html" class="nav-link">Achievements</a>
+          </li>
+          <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <!-- Title Section -->
+    <section id="title">
+      <div class="gradient-background"></div>
+      <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <img
+              id="main_image"
+              src="./goal images/groot.jpg"
+              class="d-block mx-lg-auto img-fluid"
+              alt="Team Groot"
+              width="700"
+              height="500"
+              loading="lazy"
+            />
+          </div>
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
+              Meet Team <span class="groot">Groot</span>
+            </h1>
+            <p class="lead">
+              Team Groot is a dynamic ensemble of second-year AIML students from
+              BMS Institute of Technology & Management. We are a group of four:
+              Shashikiran B.S, Dheeksha N, Amrutesh Udupa B.S, and Asritha K.
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+              <button type="button" class="btn btn-primary btn-lg px-4">
+                Work With Us
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-lg px-4"
+              >
+                Contact Us
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+      <div class="outter_box">
+        <div class="card1">
+          <h1>Amrutesh</h1>
+          <p>
+            Skilled in backend development, databases, and optimization,
+            ensuring scalable and reliable solutions.
+          </p>
+        </div>
+        <div class="card1">
+          <h1>Dheeksha</h1>
+          <p>
+            Builds complete web solutions with expertise in frontend, backend,
+            and UI/UX for seamless user experiences.
+          </p>
+        </div>
+        <div class="card1">
+          <h1>Asritha</h1>
+          <p>
+            Proficient in Python, Java, and testing, ensuring robust, accurate,
+            and high-quality software development.
+          </p>
+        </div>
+        <div class="card1">
+          <h1>Shashikiran</h1>
+          <p>
+            Skilled in backend development, databases, and optimization,
+            ensuring scalable and reliable solutions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial Carousel -->
+    <div class="hello">
+      <div
+        id="carouselExampleAutoplaying"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="./goal images/dheeksha.jpg"
+              class="d-block w-100"
+              alt="Dheeksha"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="./goal images/shashikiran.jpg"
+              class="d-block w-100"
+              alt="Shashikiran"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="./goal images/amrutesh.jpg"
+              class="d-block w-100"
+              alt="Amrutesh"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="./goal images/asritha.jpg"
+              class="d-block w-100"
+              alt="Asritha"
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer
+      class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
+    >
+      <div class="col-md-4 d-flex align-items-center">
+        <a
+          href="/"
+          class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1"
+          aria-label="Bootstrap"
+        >
+          <svg class="bi" width="30" height="24" aria-hidden="true">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+        </a>
+        <span class="mb-3 mb-md-0 text-body-secondary">© 2025 Groot, Inc</span>
+      </div>
+
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3">
+          <a class="text-body-secondary" href="#" aria-label="Instagram">
+            <svg class="bi" width="24" height="24" aria-hidden="true">
+              <use xlink:href="#instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="ms-3">
+          <a class="text-body-secondary" href="#" aria-label="Facebook">
+            <svg class="bi" width="24" height="24" aria-hidden="true">
+              <use xlink:href="#facebook"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </footer>
+
+    <!-- ✅ Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
