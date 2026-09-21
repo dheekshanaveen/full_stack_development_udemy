@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #f3eadc;
+    color: #3b2921;
+    font-family: "Inter", sans-serif;
+}
+
+/* ---------- Main Page ---------- */
+
+.page {
+    width: min(1100px, 90%);
+    margin: 0 auto;
+    padding: 70px 0;
+}
+
+/* ---------- Header ---------- */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #cbb9a5;
+}
+
+.logo {
+    font-family: "DM Serif Display", serif;
+    font-size: 2rem;
+    color: #4a2f24;
+    letter-spacing: -0.5px;
+}
+
+.create-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    background: #6b4634;
+    color: #fffaf3;
+    text-decoration: none;
+    border-radius: 7px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.create-btn:hover {
+    background: #4f3227;
+    transform: translateY(-1px);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+    padding: 75px 0 55px;
+    max-width: 760px;
+}
+
+.hero h1 {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 0.98;
+    font-weight: 400;
+    color: #38251e;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    color: #765f51;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    max-width: 620px;
+}
+
+/* ---------- Posts ---------- */
+
+.posts {
+    display: grid;
+    gap: 22px;
+}
+
+.post {
+    background: #fbf7f0;
+    border: 1px solid #dfd0bf;
+    border-radius: 10px;
+    padding: 30px;
+    transition: 0.2s ease;
+}
+
+.post:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(75, 49, 37, 0.08);
+}
+
+.post h2 {
+    font-family: "DM Serif Display", serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #4a2f24;
+    margin-bottom: 12px;
+}
+
+.post p {
+    color: #6e5a4d;
+    line-height: 1.75;
+}
+
+/* ---------- Buttons ---------- */
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.btn {
+    border: none;
+    border-radius: 6px;
+    padding: 9px 16px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.edit-btn {
+    background: #dfc8aa;
+    color: #4a3024;
+}
+
+.delete-btn {
+    background: #eee0d2;
+    color: #75483a;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* ---------- Forms ---------- */
+
+.form-container {
+    max-width: 720px;
+    margin: 70px auto;
+    background: #fbf7f0;
+    border: 1px solid #dfd0bf;
+    border-radius: 10px;
+    padding: 45px;
+}
+
+.form-container h1 {
+    font-family: "DM Serif Display", serif;
+    font-size: 3rem;
+    font-weight: 400;
+    color: #3b2921;
+    margin-bottom: 35px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #604638;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid #cdbba7;
+    border-radius: 6px;
+    padding: 14px;
+    background: #fffdf9;
+    color: #3b2921;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 220px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #76503d;
+    box-shadow: 0 0 0 3px rgba(118, 80, 61, 0.08);
+}
+
+.submit-btn {
+    border: none;
+    background: #6b4634;
+    color: #fffaf3;
+    padding: 13px 25px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #4f3227;
+}
+
+/* ---------- Back Link ---------- */
+
+.back-link {
+    display: inline-block;
+    margin-top: 25px;
+    color: #76503d;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 650px) {
+
+    .page {
+        padding: 35px 0;
+    }
+
+    header {
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .logo {
+        font-size: 1.6rem;
+    }
+
+    .create-btn {
+        padding: 10px 15px;
+    }
+
+    .hero {
+        padding: 55px 0 40px;
+    }
+
+    .hero h1 {
+        font-size: 3.3rem;
+    }
+
+    .post {
+        padding: 23px;
+    }
+
+    .form-container {
+        margin: 35px auto;
+        padding: 25px;
+    }
+
+    .form-container h1 {
+        font-size: 2.4rem;
+    }
+}
+.empty-state {
+    text-align: center;
+    padding: 70px 30px;
+    background: #fbf7f0;
+    border: 1px dashed #cbb9a5;
+    border-radius: 10px;
+}
+
+.empty-state h2 {
+    font-family: "DM Serif Display", serif;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: #765f51;
+    margin-bottom: 25px;
+}

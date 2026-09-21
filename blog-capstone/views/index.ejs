@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Journal</title>
+
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+
+    <div class="page">
+
+        <header>
+
+            <div class="logo">
+                My Journal
+            </div>
+
+            <a href="/create" class="create-btn">
+                + New Post
+            </a>
+
+        </header>
+
+
+        <section class="hero">
+
+            <h1>
+                Thoughts,<br>
+                stories & ideas.
+            </h1>
+
+            <p>
+                A little corner of the internet where
+                I write about things I learn, build and experience.
+            </p>
+
+        </section>
+
+
+        <section class="posts">
+
+            <% if (posts.length === 0) { %>
+
+                <div class="empty-state">
+
+                    <h2>No stories yet.</h2>
+
+                    <p>
+                        Your first masterpiece is waiting to be written.
+                    </p>
+
+                    <a href="/create" class="create-btn">
+                        Write the first one
+                    </a>
+
+                </div>
+
+            <% } else { %>
+
+
+                <% posts.forEach(post => { %>
+
+                    <article class="post">
+
+                        <h2>
+                            <%= post.title %>
+                        </h2>
+
+                        <p>
+                            <%= post.content %>
+                        </p>
+
+
+                        <div class="actions">
+
+                            <a
+                                href="/edit/<%= post.id %>"
+                                class="btn edit-btn"
+                            >
+                                Edit
+                            </a>
+
+
+                            <form
+                                action="/delete/<%= post.id %>"
+                                method="POST"
+                            >
+
+                                <button
+                                    type="submit"
+                                    class="btn delete-btn"
+                                >
+                                    Delete
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </article>
+
+                <% }) %>
+
+
+            <% } %>
+
+        </section>
+
+    </div>
+
+</body>
+
+</html>
