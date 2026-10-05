@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sentence Analyzer</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main>
+    <h1>What does this sentence mean to a machine?</h1>
+    <p class="lead">Type a sentence. Wit.ai finds the intent behind it and picks out times, numbers, and places.</p>
+
+    <!-- The form sends a GET request: /analyze?text=your+sentence -->
+    <form action="/analyze" method="GET">
+      <input type="text" name="text" value="<%= text %>" placeholder="Remind me to call mom tomorrow at 5pm" autofocus>
+      <button type="submit">Analyze</button>
+    </form>
+
+    <!-- EJS: show the error box only if 'error' has a value -->
+    <% if (error) { %>
+      <p class="error" role="alert"><%= error %></p>
+    <% } %>
+
+    <% if (result) { %>
+      <section class="card">
+        <h2>Intent</h2>
+        <% if (result.intent) { %>
+          <p class="big"><%= result.intent %></p>
+          <div class="bar" aria-label="Confidence <%= result.confidence %> percent">
+            <span style="width: <%= result.confidence %>%"></span>
+          </div>
+          <p class="muted"><%= result.confidence %>% confident</p>
+          <% result.otherIntents.forEach(i => { %>
+            <p class="muted">Also possible: <%= i.name %> (<%= i.confidence %>%)</p>
+          <% }) %>
+        <% } else { %>
+          <p class="muted">No intent found. Train some intents in your Wit.ai app (see README).</p>
+        <% } %>
+      </section>
+
+      <section class="card">
+        <h2>Entities found</h2>
+        <% if (result.entities.length) { %>
+          <ul>
+            <% result.entities.forEach(e => { %>
+              <li>
+                <strong><%= e.type %></strong>
+                <span>"<%= e.text %>"</span>
+                <% if (e.value) { %><span class="muted">= <%= e.value %></span><% } %>
+                <span class="muted"><%= e.confidence %>%</span>
+              </li>
+            <% }) %>
+          </ul>
+        <% } else { %>
+          <p class="muted">No entities detected in this sentence.</p>
+        <% } %>
+      </section>
+    <% } %>
+  </main>
+</body>
+</html>
