@@ -4,13 +4,14 @@ import pg from "pg";
 const app = express();
 const port = 3000;
 
-const db = new pg.client({
+const db = new pg.Client({
   user: "postgres",
   host: "localhost",
   database: "world",
   password: "SamsungS24FE",
   port: 5432,
 });
+db.connect();
 
 let quiz = [
   { country: "France", capital: "Paris" },
