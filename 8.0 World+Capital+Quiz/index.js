@@ -3,13 +3,15 @@ import bodyParser from "body-parser";
 import pg from "pg";
 const app = express();
 const port = 3000;
-const db =new.client({
+
+const db = new pg.client({
   user: "postgres",
   host: "localhost",
-  database: "world_capitals",
-  password: "password",
+  database: "world",
+  password: "SamsungS24FE",
   port: 5432,
 });
+
 let quiz = [
   { country: "France", capital: "Paris" },
   { country: "United Kingdom", capital: "London" },
