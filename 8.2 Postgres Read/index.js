@@ -38,6 +38,15 @@ app.get("/", (req, res) => {
 });
 
 // POST a new post
+app.post("/submit", (req, res) => {
+  let answer = req.body.answer.trim();
+  let isCorrect = false;
+  if (currentQuestion.capital.toLowerCase() === answer.toLowerCase()) {
+    totalCorrect++;
+    console.log(totalCorrect);
+    isCorrect = true;
+  }
+
   nextQuestion();
   res.render("index.ejs", {
     question: currentQuestion,
