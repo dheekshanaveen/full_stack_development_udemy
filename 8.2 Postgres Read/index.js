@@ -23,6 +23,9 @@ db.query("SELECT * FROM flags", (err, res) => {
 });
 let totalCorrect = 0;
 let currentQuestion = {};
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
+app.set("view engine", "ejs");
 // GET home page
 app.get("/", (req, res) => {
   totalCorrect = 0;
