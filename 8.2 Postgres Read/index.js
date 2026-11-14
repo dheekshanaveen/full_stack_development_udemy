@@ -9,9 +9,12 @@ const db = new pg.Client({
   password: "SamsungS24FE",
   port: 5432,
 });
+
 const app = express();
 const port = 3000;
+
 db.connect();
+
 let quiz = [];
 db.query("SELECT * FROM flags", (err, res) => {
   if (err) {
@@ -21,15 +24,19 @@ db.query("SELECT * FROM flags", (err, res) => {
   }
   db.end();
 });
+
 let totalCorrect = 0;
-let currentQuestion = {};
+
+// Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-app.set("view engine", "ejs");
+
+let currentQuestion = {};
+
 // GET home page
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
   totalCorrect = 0;
-  nextQuestion();
+  await nextQuestion();
   console.log(currentQuestion);
   res.render("index.ejs", { question: currentQuestion });
 });
@@ -38,12 +45,13 @@ app.get("/", (req, res) => {
 app.post("/submit", (req, res) => {
   let answer = req.body.answer.trim();
   let isCorrect = false;
-  if (currentQuestion.capital.toLowerCase() === answer.toLowerCase()) {
+  if (currentQuestion.name.toLowerCase() === answer.toLowerCase()) {
     totalCorrect++;
     console.log(totalCorrect);
     isCorrect = true;
   }
-nextQuestion();
+
+  nextQuestion();
   res.render("index.ejs", {
     question: currentQuestion,
     wasCorrect: isCorrect,
@@ -51,8 +59,9 @@ nextQuestion();
   });
 });
 
-function nextQuestion() {
+async function nextQuestion() {
   const randomCountry = quiz[Math.floor(Math.random() * quiz.length)];
+
   currentQuestion = randomCountry;
 }
 
