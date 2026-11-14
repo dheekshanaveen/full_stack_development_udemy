@@ -23,8 +23,11 @@ db.query("SELECT * FROM flags", (err, res) => {
 });
 let totalCorrect = 0;
 
-let currentQuestion = {};
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
+app.set("view engine", "ejs");
+let currentQuestion = {};
 // GET home page
 app.get("/", (req, res) => {
   totalCorrect = 0;
@@ -42,8 +45,7 @@ app.post("/submit", (req, res) => {
     console.log(totalCorrect);
     isCorrect = true;
   }
-
-  nextQuestion();
+nextQuestion();
   res.render("index.ejs", {
     question: currentQuestion,
     wasCorrect: isCorrect,
