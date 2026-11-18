@@ -1,6 +1,14 @@
 import express from "express";
 import bodyParser from "body-parser";
-
+import pg from "pg";
+const db = new pg.Client({
+  user: "postgres",
+  host: "localhost",
+  database: "world",
+  password: "SamsungS24FE",
+  port: 5432,
+});
+db.connect();
 const app = express();
 const port = 3000;
 
@@ -9,6 +17,7 @@ app.use(express.static("public"));
 
 app.get("/", async (req, res) => {
   //Write your code here.
+  
 });
 
 app.listen(port, () => {
