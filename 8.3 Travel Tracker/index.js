@@ -24,43 +24,57 @@ app.get("/", async (req, res) => {
   res.render("index.ejs", { countries: countries, total: countries.length });
 });
 app.post("/add", async (req, res) => {
-  const input = req.body.country.trim();
+  const input = req.body.country.trim().toLowerCase();
 
   try {
-    // Use LOWER() + LIKE so "france" or "united states" matches reliably
-    const result = await db.query(
-      "SELECT country_code FROM countries WHERE LOWER(country_name) LIKE '%' || $1 || '%';",
-      [input.toLowerCase()]
+    // 1. Try an exact match first so "india" doesn't collide with "Indian Ocean"
+    let result = await db.query(
+      "SELECT country_code FROM countries WHERE LOWER(country_name) = $1;",
+      [input]
     );
 
+    // 2. Fall back to partial match only if no exact match was found
     if (result.rows.length === 0) {
-      throw new Error("Country does not exist");
+      result = await db.query(
+        "SELECT country_code FROM countries WHERE LOWER(country_name) LIKE '%' || $1 || '%';",
+        [input]
+      );
     }
 
-    const countryCode = result.rows[0].country_code;
+    if (result.rows.length === 0) {
+      const countries = await checkVisited();
+      return res.render("index.ejs", {
+        countries,
+        total: countries.length,
+        error: "Country name does not exist, try again.",
+      });
+    }
 
+    const countryCode = result.rows[0].country_code.trim();
+
+    // 3. Insert safely (catches duplicate country errors without crashing)
     try {
       await db.query(
-        "INSERT INTO visited_countries (country_code) VALUES ($1)",
+        "INSERT INTO visited_countries (country_code) VALUES ($1);",
         [countryCode]
       );
       res.redirect("/");
     } catch (err) {
-      // Handles duplicate entries if country_code is UNIQUE
+      console.error("Insert error:", err.message);
       const countries = await checkVisited();
       res.render("index.ejs", {
-        countries: countries,
+        countries,
         total: countries.length,
         error: "Country has already been added, try again.",
       });
     }
   } catch (err) {
-    // Handles misspelled or non-existent countries
+    console.error("Query error:", err.message);
     const countries = await checkVisited();
     res.render("index.ejs", {
-      countries: countries,
+      countries,
       total: countries.length,
-      error: "Country name does not exist, try again.",
+      error: "Something went wrong, try again.",
     });
   }
 });
